@@ -12,17 +12,24 @@ class RecipeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< HEAD
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           centerTitle: true,
         ),
       ),
+=======
+      theme: ThemeData(appBarTheme: const AppBarTheme(centerTitle: true)),
+>>>>>>> ddbf3bff7287a95369e894f74d15ad67f7bf2aef
       home: const MyHomePage(title: 'Recipe Calculator'),
     );
   }
 }
  
+<<<<<<< HEAD
  
+=======
+>>>>>>> ddbf3bff7287a95369e894f74d15ad67f7bf2aef
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -34,6 +41,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
    
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
@@ -75,6 +83,48 @@ class _MyHomePageState extends State<MyHomePage> {
             Image(image: AssetImage(recipe.imageUrl)),
             const SizedBox(height: 14.0,),
             Text(recipe.imgLabel,
+=======
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: SafeArea(
+        child: Container(
+          child: ListView.builder(
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  print('You Tapped on ${Recipe.samples[index].imgLabel}');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return RecipeDetail(recipe: Recipe.samples[index]);
+                      },
+                    ),
+                  );
+                },
+                child: buildRecipeCard(Recipe.samples[index]),
+              );
+            },
+            itemCount: Recipe.samples.length,
+          ),
+        ),
+      ),
+    );
+  }
+ 
+  Widget buildRecipeCard(Recipe recipe) {
+    return Card(
+      elevation: 2.0,
+      shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            Image(image: AssetImage(recipe.imageUrl)),
+            const SizedBox(height: 14.0),
+            Text(
+              recipe.imgLabel,
+>>>>>>> ddbf3bff7287a95369e894f74d15ad67f7bf2aef
               style: const TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.w500,
@@ -86,6 +136,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+<<<<<<< HEAD
 }
  
  
+=======
+}
+>>>>>>> ddbf3bff7287a95369e894f74d15ad67f7bf2aef
