@@ -41,7 +41,7 @@ class Recipe {
       Ingredient(name: 'Pad Thai sauce (Tamarind based)', quantity: 3, unit: 'tablespoons'),
   ]
   ),
-  Recipe('assets/images/Sweet thai basit smash cocktail.webp', 
+  Recipe('assets/images/Sweet.webp', 
   'Sweet thai basit smash cocktail',
   'The Sweet Thai Basil Smash is a modern Thai-inspired twist on the classic Gin Basil Smash, replacing Mediterranean basil with indigenous Thai Sweet Basil (Horapa) to introduce unique anise-like notes and a spicy aromatic depth.',
   [
