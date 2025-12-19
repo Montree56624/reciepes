@@ -1,54 +1,84 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-class RecipeDetail extends StatelessWidget {
-  const RecipeDetail({super.key});
-=======
 import 'package:reciepes/Model/recipe.dart';
  
-class RecipeDetail extends StatelessWidget {
+class RecipeDetail extends StatefulWidget {
   final Recipe recipe;
  
-  const RecipeDetail({super.key, required this.recipe});
->>>>>>> ddbf3bff7287a95369e894f74d15ad67f7bf2aef
+  const RecipeDetail({
+    super.key,
+    required this.recipe,
+  });
+ 
+  @override
+  State<RecipeDetail> createState() => _RecipeDetailState();
+}
+ 
+class _RecipeDetailState extends State<RecipeDetail> {
+  int sliderVal = 1;
  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
       appBar: AppBar(
         title: const Text('Recipe Detail'),
       ),
-      body: const Center(
-        child: Text('Details of the recipe will be shown here.'),
-=======
-      appBar: AppBar(title: const Text('Recipe Detail')),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
-          children: <Widget>[
-            Image(image: AssetImage(recipe.imageUrl)),
-            const SizedBox(height: 14.0),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(widget.recipe.imageUrl),
+            const SizedBox(height: 16),
             Text(
-              recipe.imgLabel,
+              widget.recipe.imgLabel,
               style: const TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w700,
-                fontFamily: 'Palatino',
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 14.0),
-            Text(
-              recipe.description,
-              style: const TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w700,
-                fontFamily: 'Palatino',
+            const SizedBox(height: 8),
+            Text(widget.recipe.description),
+            const SizedBox(height: 16),
+ 
+            const Text(
+              'Ingredients',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
               ),
+            ),
+ 
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.recipe.ingredient.length,
+                itemBuilder: (context, index) {
+                  final ingredient = widget.recipe.ingredient[index];
+                  return Text(
+                    '${ingredient.quantity * sliderVal} '
+                    '${ingredient.unit} ${ingredient.name}',
+                    style: const TextStyle(fontSize: 16),
+                  );
+                },
+              ),
+            ),
+ 
+            Slider(
+              min: 1,
+              max: 10,
+              divisions: 9,
+              label: sliderVal.toString(),
+              value: sliderVal.toDouble(),
+              onChanged: (value) {
+                setState(() {
+                  sliderVal = value.round();
+                });
+              },
             ),
           ],
         ),
->>>>>>> ddbf3bff7287a95369e894f74d15ad67f7bf2aef
       ),
     );
   }
 }
+ 
+ 
